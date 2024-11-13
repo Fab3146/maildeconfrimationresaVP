@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confirmation de Réservation - Padel</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    /* Logo */
+    .logo {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .logo img {
+      max-width: 120px;
+      height: auto;
+    }
+
+    /* Container styles */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px 15px;
+    }
+
+    /* Section styles */
+    .section {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* Section titles */
+    .section-title {
+      color: #0A3778;
+      font-size: 18px;
+      margin-bottom: 15px;
+      text-align: center; /* Center align titles */
+    }
+
+    /* Main Image */
+    .main-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* Message de remerciement */
+    .thank-you {
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Details grid */
+    .details-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #1E88E5;
+    }
+
+    /* Map embed */
+    .map-embed {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    /* Button/link styles */
+    .reservation-link {
+      display: inline-block;
+      background-color: #1E88E5;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    /* Small text for additional sections */
+    .small-text {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Typography adjustments for mobile */
+    @media screen and (max-width: 480px) {
+      .section-title {
+        font-size: 16px;
+      }
+      .reservation-link {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="-Village_Padel_LOGO_LOLA_Bon__1_sansfond.qpng.png" alt="Logo Village Padel">
+  </div>
+
+  <div class="container">
+    
+    <!-- Message de remerciement -->
+    <p class="thank-you">Chers Villageois, Merci d'avoir réservé votre session de padel au Village Padel ! Nous sommes ravis de vous accueillir pour un moment sportif et convivial.L'équipe VILLAGE PADEL.</p>
+
+    <!-- Main Image (bandeau) -->
+    <div class="main-image">
+      <img src="DAMA-Deauville-Partie-de-Padel-entre-4-joueurs-1024x341.png" alt="Photo de padel">
+    </div>
+
+    <!-- Reservation Details -->
+    <div class="section">
+      <h2 class="section-title">Votre réservation est confirmée !</h2>
+      <div class="details-grid">
+        <span class="label">Date :</span>
+        <span>{{date}}</span>
+        <span class="label">Heure :</span>
+        <span>{{time}}</span>
+        <span class="label">Lieu :</span>
+        <span>{{location}}</span>
+        <span class="label">Adresse :</span>
+        <span>530 chemin de la belle gabrielle, 82170</span>
+      </div>
+
+      <!-- Google Map Embed -->
+      <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.705735169139!2d1.2849482756664545!3d43.820462841597454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ac03797fae2099%3A0xb0184e9f73d0075b!2sVillage%20Padel!5e0!3m2!1sfr!2sfr!4v1731409845420!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      <!-- View Reservation Link -->
+      <a href="#" class="reservation-link">Visualiser votre réservation</a>
+    </div>
+
+    <!-- Action Required - Special Rates -->
+    {{#if hasSpecialPricing}}
+    <div class="section small-text">
+      <h2 class="section-title">⚠️ Action Requise - Tarifs Spéciaux</h2>
+      <p><strong>Important : Confirmation obligatoire des participants</strong></p>
+      <p>Votre réservation inclut des tarifs spéciaux. Pour en bénéficier, chaque participant doit confirmer sa présence depuis l'application :</p>
+      <ul>
+        <li>Délai de confirmation : <strong>6 heures avant</strong> la session</li>
+        <li>Sans confirmation, le tarif plein sera appliqué pour les participants non confirmés</li>
+      </ul>
+    </div>
+    {{/if}}
+
+    <!-- Payment Information -->
+    <div class="section small-text">
+      <h2 class="section-title">Information de Paiement</h2>
+      <p>Une pré-autorisation a été effectuée sur votre carte bancaire. Le montant sera débité lorsque la réservation ne sera plus annulable. Vous recevrez une facture par email de notre partenaire Stripe à ce moment-là.</p>
+    </div>
+
+    <!-- Court Access -->
+    <div class="section small-text">
+      <h2 class="section-title">Accès au Court</h2>
+      <ol>
+        <li>Accédez à votre réservation depuis la page d'accueil</li>
+        <li>Appuyez sur le bouton "Ouvrir" pour déverrouiller le court</li>
+        <li>Pour les sessions en soirée, l'éclairage s'allumera automatiquement</li>
+      </ol>
+      <p>L'accès au court est possible 10 minutes avant le début de votre session.</p>
+    </div>
+
+    <!-- Rented Equipment -->
+    {{#if hasRentals}}
+    <div class="section small-text">
+      <h2 class="section-title">Matériel Loué</h2>
+      <p>Pour accéder à votre matériel de location (raquettes, etc.), utilisez le même menu que pour l'ouverture du court et appuyez sur le bouton de déverrouillage du matériel.</p>
+    </div>
+    {{/if}}
+  </div>
+
+<!-- Footer for Unsubscribe Links -->
+<div class="footer" style="text-align: center; padding: 20px;">
+    <div data-role="module-unsubscribe" class="module" role="module" data-type="unsubscribe">
+      <p>
+        <a class="Unsubscribe--unsubscribeLink" href="{{{unsubscribe}}}" target="_blank" style="color: #666; text-decoration: underline;">
+          Se désabonner
+        </a>
+        -
+        <a href="{{{unsubscribe_preferences}}}" target="_blank" class="Unsubscribe--unsubscribePreferences" style="color: #666; text-decoration: underline;">
+          Préférences d'abonnement
+        </a>
+      </p>
+    </div>
+  </div>
+  
+
+</body>
+</html>
